@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALVADINHA — Inteligência Artificial no IMVU</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121217;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #121217;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            font-size: 10px;
+            color: #888888;
+            margin-left: 8px;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 14px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3b6b;
+        }
+
+        .header-buttons a {
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .entrar {
+            color: #cccccc;
+            margin-right: 20px;
+        }
+
+        .entrar:hover {
+            color: #ffffff;
+        }
+
+        .comecar {
+            background-color: #ff3b6b;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .comecar:hover {
+            background-color: #e62e5c;
+        }
+
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            max-width: 500px;
+            z-index: 2;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .tag span {
+            color: #ff3b6b;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 24px;
+            letter-spacing: 4px;
+        }
+
+        .subtitulo {
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 16px;
+        }
+
+        .descricao {
+            font-size: 14px;
+            color: #888888;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .botoes {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .btn-principal {
+            background-color: #ff3b6b;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .btn-principal:hover {
+            background-color: #e62e5c;
+        }
+
+        .btn-secundario {
+            color: #ffffff;
+            padding: 14px 28px;
+            border: 1px solid #444444;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: border-color 0.3s;
+        }
+
+        .btn-secundario:hover {
+            border-color: #ffffff;
+        }
+
+        .exemplos {
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .comandos-exemplo {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .comando {
+            background-color: #1f1f26;
+            color: #cccccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 55%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            object-position: right center;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .botoes, .comandos-exemplo {
+                justify-content: center;
+            }
+
+            .hero-image {
+                position: relative;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-image img {
+                max-width: 320px;
+            }
+
+            header {
+                flex-wrap: wrap;
+                gap: 12px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MALVADINHA <span>IA / IMVU</span></div>
+        <nav>
+            <a href="#">A IA</a>
+            <a href="#">Exemplos</a>
+            <a href="#">Recursos</a>
+            <a href="#">Salas</a>
+        </nav>
+        <div class="header-buttons">
+            <a href="#" class="entrar">ENTRAR</a>
+            <a href="#" class="comecar">COMEÇAR</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <p class="tag"><span>INTELIGÊNCIA ARTIFICIAL</span> NO IMVU</p>
+            <h1>MALVADINHA</h1>
+            <p class="subtitulo">Mais que um bot de música. Uma presença na sua sala.</p>
+            <p class="descricao">Ela conversa, entende o contexto e se encaixa no clima da sala, sem transformar tudo numa lista de comandos. Um pouco malvada, sempre divertida.</p>
+            
+            <div class="botoes">
+                <a href="#" class="btn-principal">Conhecer a Malvadinha</a>
+                <a href="#" class="btn-secundario">Entrar</a>
+            </div>
+
+            <p class="exemplos">Escolha uma conversa de exemplo</p>
+            <div class="comandos-exemplo">
+                <span class="comando">"Malvadinha, toca major rd 60k-"</span>
+                <span class="comando">"Malvadinha, sabe dançar?"</span>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="sua-imagem-aqui.png" alt="Malvadinha">
+        </div>
+    </section>
+
+</body>
+</html>
